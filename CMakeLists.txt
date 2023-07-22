@@ -29,9 +29,9 @@ target_include_directories(${EXE} PRIVATE User)
 target_link_libraries(${EXE} PUBLIC -Wl,--gc-sections -specs=nosys.specs -lc -lm SDK -T${LINKER_FILE})
 
 # Convert elf file into intel hex/binary format(after elf file is build)
-set(HEX_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.hex)
-set(BIN_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.bin)
-set(ASM_FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.s)
+set(HEX_FILE ${CMAKE_CURRENT_BINARY_DIR}/${EXE}.hex)
+set(BIN_FILE ${CMAKE_CURRENT_BINARY_DIR}/${EXE}.bin)
+set(ASM_FILE ${CMAKE_CURRENT_BINARY_DIR}/${EXE}.s)
 
 add_custom_command(TARGET ${EXE} POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -Oihex ${EXE} ${HEX_FILE}
